@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Homestyle Kitchen — Made with Love</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:   #FEF6E4;
+  --saffron: #E07B0A;
+  --maroon:  #7B1818;
+  --turmeric:#D4950A;
+  --green:   #3D6B35;
+  --blush:   #F5DEB3;
+  --text:    #2C1A0E;
+  --muted:   #6B4226;
+}
+
+body { font-family: 'Nunito', sans-serif; background: #e8dfc8; color: var(--text); }
+
+.page {
+  width: 210mm; min-height: 297mm; margin: 0 auto 8mm auto;
+  background: var(--cream); position: relative; overflow: hidden; page-break-after: always;
+}
+.page::before {
+  content: ''; position: absolute; top: -30px; left: -30px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, var(--turmeric) 0%, transparent 70%);
+  opacity: 0.18; border-radius: 50%;
+}
+.page::after {
+  content: ''; position: absolute; bottom: -30px; right: -30px;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, var(--maroon) 0%, transparent 70%);
+  opacity: 0.15; border-radius: 50%;
+}
+
+.stripe-top {
+  height: 9px;
+  background: repeating-linear-gradient(90deg,
+    var(--maroon) 0px, var(--maroon) 20px, var(--saffron) 20px, var(--saffron) 40px,
+    var(--turmeric) 40px, var(--turmeric) 60px, var(--green) 60px, var(--green) 80px);
+}
+.stripe-bottom {
+  height: 9px;
+  background: repeating-linear-gradient(90deg,
+    var(--green) 0px, var(--green) 20px, var(--turmeric) 20px, var(--turmeric) 40px,
+    var(--saffron) 40px, var(--saffron) 60px, var(--maroon) 60px, var(--maroon) 80px);
+  position: absolute; bottom: 0; left: 0; right: 0;
+}
+
+.inner { padding: 10mm 14mm 20px 14mm; }
+
+/* ── COVER ── */
+.cover-wrap {
+  padding: 12mm 14mm 14mm 14mm; display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  min-height: calc(297mm - 18px); justify-content: space-between;
+}
+.cover-brand { font-family:'Pacifico',cursive; font-size:54px; color:var(--saffron); line-height:1.1; text-shadow:2px 2px 0 rgba(123,24,24,.15); }
+.cover-subtitle { font-family:'Kalam',cursive; font-size:19px; color:var(--maroon); margin:6px 0 10px 0; }
+.cover-tagline { font-family:'Nunito',sans-serif; font-size:13px; color:var(--muted); font-style:italic; margin-bottom:10px; }
+
+.garland { display:flex; align-items:center; justify-content:center; gap:4px; margin:8px 0; font-size:18px; }
+.garland-line { flex:1; max-width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--turmeric),transparent); }
+
+/* Food photo strip */
+.food-strip { display:flex; gap:8px; margin:12px 0; width:100%; justify-content:center; }
+.food-img-wrap {
+  width: 120px; height: 90px; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15); border: 2px solid white; flex-shrink:0;
+}
+.food-img-wrap svg { width:100%; height:100%; }
+
+.cover-badges { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:10px 0; }
+.badge { background:var(--maroon); color:white; font-family:'Nunito',sans-serif; font-size:11px; font-weight:700; padding:5px 14px; border-radius:20px; letter-spacing:0.5px; text-transform:uppercase; }
+.badge.outline { background:transparent; border:2px solid var(--saffron); color:var(--saffron); }
+.badge.veg { background:#2D6A2D; color:white; }
+
+.cover-contact {
+  background:white; border:2px dashed var(--turmeric); border-radius:14px;
+  padding:12px 24px; display:flex; gap:24px; align-items:center; justify-content:center; margin-top:8px;
+}
+.contact-item { display:flex; align-items:center; gap:6px; font-size:14px; font-weight:800; color:var(--maroon); }
+
+/* Collection info box */
+.collection-box {
+  background: #fff8ef; border: 1.5px solid var(--turmeric); border-radius: 12px;
+  padding: 10px 18px; margin: 8px 0; font-size: 12px; color: var(--muted); width: 100%; text-align: left;
+}
+.collection-box .col-title { font-weight: 800; color: var(--maroon); font-size: 13px; margin-bottom: 4px; }
+.collection-row { display: flex; gap: 20px; }
+.collection-item { flex: 1; }
+.collection-item .ci-head { font-weight: 700; color: var(--green); font-size: 11.5px; }
+
+/* ── SECTION HEADER ── */
+.section-head { display:flex; align-items:center; gap:8px; margin:10px 0 5px 0; }
+.section-head:first-child { margin-top:0; }
+.section-icon { font-size:20px; width:34px; height:34px; background:var(--saffron); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 2px 5px rgba(224,123,10,.3); }
+.section-title { font-family:'Kalam',cursive; font-size:19px; color:var(--maroon); font-weight:700; }
+.section-sub { font-size:10px; color:var(--muted); font-style:italic; margin-left:auto; flex-shrink:0; }
+
+/* ── MENU TABLE ── */
+.subsection-label { font-family:'Kalam',cursive; font-size:12.5px; color:var(--green); font-weight:700; margin:6px 0 2px 0; padding-bottom:2px; border-bottom:1.5px dotted var(--turmeric); display:inline-block; }
+table.m { width:100%; border-collapse:collapse; }
+table.m tr { border-bottom:1px dotted #e8d8b8; }
+table.m tr:last-child { border-bottom:none; }
+table.m td { padding:3.5px 3px; vertical-align:middle; font-size:12px; }
+table.m td.n { font-weight:700; color:var(--text); width:44%; }
+table.m td.v { color:var(--muted); font-size:10.5px; width:32%; }
+table.m td.p { text-align:right; font-weight:800; color:var(--maroon); font-size:12.5px; width:24%; white-space:nowrap; }
+.min-note { font-size:9px; color:var(--saffron); font-weight:600; display:block; }
+tr.hs td { background:#fff8ef; }
+tr.hs td.n { color:var(--maroon); }
+.hs-star { color:var(--saffron); font-size:10px; }
+
+/* ── LAYOUT ── */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:0 16px; }
+.col-block { break-inside:avoid; }
+.sec-divider { border:none; border-top:2px dashed #e8d0a0; margin:7px 0; }
+
+/* ── FOOD PHOTO INLINE STRIP ── */
+.dish-photos { display:flex; gap:7px; margin:8px 0 5px 0; }
+.dish-photo { border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.13); border:2px solid white; flex:1; }
+.dish-photo img { width:100%; height:120px; object-fit:cover; display:block; }
+
+/* ── PAGE FOOTER ── */
+.page-footer {
+  position:absolute; bottom:14px; left:14mm; right:14mm;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:10px; color:var(--muted); border-top:1px dotted #d9c9a0; padding-top:5px;
+}
+
+/* ── THANK YOU ── */
+.ty-center { text-align:center; padding:16mm 14mm; }
+.ty-brand { font-family:'Pacifico',cursive; font-size:40px; color:var(--saffron); margin-bottom:6px; }
+.ty-head { font-family:'Kalam',cursive; font-size:21px; color:var(--maroon); margin-bottom:12px; }
+.ty-box { background:white; border:2px solid var(--blush); border-radius:14px; padding:14px 20px; text-align:left; font-size:11.5px; line-height:1.75; color:var(--muted); max-width:140mm; margin:12px auto; }
+.ty-box li { margin-left:16px; margin-bottom:3px; }
+.ty-contact-row { display:flex; justify-content:center; gap:18px; margin-top:14px; flex-wrap:wrap; }
+.ty-contact-pill { background:var(--maroon); color:white; font-weight:800; font-size:13px; padding:9px 20px; border-radius:30px; display:flex; align-items:center; gap:6px; }
+
+@media print { body { background:white; } .page { margin:0; box-shadow:none; } }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER PAGE ══════════════ -->
+<div class="page">
+  <div class="stripe-top"></div>
+  <div class="cover-wrap">
+
+    <div>
+      <div class="cover-brand">Homestyle Kitchen</div>
+      <div class="cover-subtitle">🍛 Delicious Homemade Indian Food 🍛</div>
+      <div class="garland">
+        <div class="garland-line"></div>
+        <span>🌸</span><span>🌼</span><span>🌸</span><span>🌼</span><span>🌸</span>
+        <div class="garland-line"></div>
+      </div>
+      <div class="cover-tagline">Snacks · Sweets · Curries · Made fresh, made with love</div>
+    </div>
+
+    <!-- 5 food SVG illustrations -->
+    <div class="food-strip">
+      <!-- Samosa -->
+      <div class="food-img-wrap">
+        <img src="https://images.pexels.com/photos/36170557/pexels-photo-36170557.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Crispy Samosa" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy">
+      </div>
+      <!-- Rasmalai -->
+      <div class="food-img-wrap">
+        <img src="https://images.pexels.com/photos/7449105/pexels-photo-7449105.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Rasmalai" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy">
+      </div>
+      <!-- Sandwich -->
+      <div class="food-img-wrap">
+        <img src="https://images.pexels.com/photos/35658543/pexels-photo-35658543.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Veg Sandwich" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy">
+      </div>
+      <!-- Dal Baati -->
+      <div class="food-img-wrap">
+        <img src="https://images.pexels.com/photos/37182514/pexels-photo-37182514.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Dal Baati" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy">
+      </div>
+      <!-- Chole Bhature -->
+      <div class="food-img-wrap">
+        <img src="https://images.pexels.com/photos/11818239/pexels-photo-11818239.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Chole Bhature" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy">
+      </div>
+    </div>
+
+    <div class="cover-badges">
+      <span class="badge veg">🟢 100% Pure Vegetarian</span>
+      <span class="badge">🏠 Homemade</span>
+      <span class="badge">✨ Made Fresh</span>
+      <span class="badge outline">🎉 Bulk &amp; Party Orders</span>
+    </div>
+
+    <!-- Collection & Delivery info -->
+    <div class="collection-box">
+      <div class="col-title">📦 Order &amp; Delivery</div>
+      <div class="collection-row">
+        <div class="collection-item">
+          <div class="ci-head">🚶 Self Collection</div>
+          325CP Bus Stop, Sengkang
+        </div>
+        <div style="width:1px; background:#e8d0a0; margin:0 4px;"></div>
+        <div class="collection-item">
+          <div class="ci-head">🛵 Home Delivery</div>
+          Available · Charges as per Grab
+        </div>
+      </div>
+    </div>
+
+    <div style="font-family:'Kalam',cursive; font-size:14px; color:var(--green); margin-bottom:6px;">
+      "Ghar ka khana, dil se banaya" &nbsp;|&nbsp; Custom orders welcome! 🌼
+    </div>
+
+    <div class="cover-contact">
+      <div class="contact-item"><span>📱</span> +65 8909 9125</div>
+      <div style="width:1px; height:26px; background:#e8d0a0;"></div>
+      <div class="contact-item"><span>📸</span> @handcraft9192</div>
+    </div>
+
+  </div>
+  <div class="stripe-bottom"></div>
+</div>
+
+
+<!-- ══════════════ PAGE 2: SNACKS + FAST FOOD + DRY SNACKS + CHAAT ══════════════ -->
+<div class="page">
+  <div class="stripe-top"></div>
+  <div class="inner">
+
+    <!-- Dish photo row: Samosa, Sandwich -->
+    <div class="dish-photos" style="margin-top:4px;">
+      <div class="dish-photo">
+      <img src="https://images.pexels.com/photos/36170557/pexels-photo-36170557.jpeg?auto=compress&cs=tinysrgb&w=600&h=160&fit=crop" alt="Snacks & Fast Food" style="width:100%;height:120px;object-fit:cover;object-position:center;display:block;border-radius:8px;" loading="lazy">
+    </div>
+      <div class="dish-photo">
+      <img src="https://images.pexels.com/photos/11818239/pexels-photo-11818239.jpeg?auto=compress&cs=tinysrgb&w=600&h=160&fit=crop" alt="Dry Snacks & Chaat" style="width:100%;height:120px;object-fit:cover;object-position:center;display:block;border-radius:8px;" loading="lazy">
+    </div>
+    </div>
+
+    <!-- FAST FOOD & SANDWICHES -->
+    <div class="section-head">
+      <div class="section-icon">🥪</div>
+      <div class="section-title">Fast Food &amp; Sandwiches</div>
+      <div class="section-sub">Quick bites, made fresh</div>
+    </div>
+    <div class="two-col">
+      <div class="col-block">
+        <div class="subsection-label">Quick Bites</div>
+        <table class="m">
+          <tr><td class="n">Burger <span class="min-note">Min. 2 pcs</span></td><td class="v">per pc</td><td class="p">S$ 5</td></tr>
+          <tr class="hs"><td class="n">Pasta <span class="hs-star">⭐</span></td><td class="v">Red/White/Pink, plate</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Noodles</td><td class="v">plate</td><td class="p">S$ 7</td></tr>
+        </table>
+      </div>
+      <div class="col-block">
+        <div class="subsection-label">Sandwiches</div>
+        <table class="m">
+          <tr><td class="n">Potato Sandwich</td><td class="v">per pc</td><td class="p">S$ 5</td></tr>
+          <tr><td class="n">Curd Sandwich</td><td class="v">per pc</td><td class="p">S$ 5</td></tr>
+          <tr><td class="n">Veg Cheese Sandwich</td><td class="v">per pc</td><td class="p">S$ 5</td></tr>
+          <tr><td class="n">Pizza Sandwich</td><td class="v">per pc</td><td class="p">S$ 6</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <hr class="sec-divider">
+
+    <!-- SNACKS -->
+    <div class="section-head">
+      <div class="section-icon">🥙</div>
+      <div class="section-title">Snacks, Made with Love</div>
+      <div class="section-sub">Festive favourites &amp; crispy bites</div>
+    </div>
+    <div class="two-col">
+      <div class="col-block">
+        <table class="m">
+          <tr><td class="n">Fried Idly <span class="min-note">Min. 6 pcs</span></td><td class="v">plate</td><td class="p">S$ 5</td></tr>
+          <tr class="hs"><td class="n">Samosa <span class="hs-star">⭐</span> <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 3</td></tr>
+          <tr class="hs"><td class="n">Pyaz Kachori <span class="hs-star">⭐</span> <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 3.50</td></tr>
+          <tr><td class="n">Chole Bhature</td><td class="v">plate</td><td class="p">S$ 10</td></tr>
+          <tr><td class="n">Dhokla</td><td class="v">6 pcs, plate</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Pav Bhaji</td><td class="v">plate</td><td class="p">S$ 10</td></tr>
+          <tr><td class="n">Manchurian</td><td class="v">plate</td><td class="p">S$ 10</td></tr>
+          <tr><td class="n">Vada Pav <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 3</td></tr>
+          <tr><td class="n">Dabeli <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 3</td></tr>
+          <tr class="hs"><td class="n">Chole Tikki <span class="hs-star">⭐</span></td><td class="v">plate</td><td class="p">S$ 8</td></tr>
+        </table>
+      </div>
+      <div class="col-block">
+        <table class="m">
+          <tr><td class="n">Sweet Corn Chaat</td><td class="v">plate</td><td class="p">S$ 5</td></tr>
+          <tr><td class="n">Honey Chilli Potato</td><td class="v">plate</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Cheese Balls <span class="min-note">Min. 6 pcs</span></td><td class="v">Normal/Corn, pc</td><td class="p">S$ 2</td></tr>
+          <tr><td class="n">Veg Cutlet <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 2</td></tr>
+          <tr><td class="n">Dahi Kabab <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 3</td></tr>
+          <tr><td class="n">Spring Roll <span class="min-note">Min. 6 pcs</span></td><td class="v">Veg/Potato/Noodles, pc</td><td class="p">S$ 3</td></tr>
+          <tr><td class="n">Dal Pakwan</td><td class="v">plate</td><td class="p">S$ 4</td></tr>
+          <tr><td class="n">Chana Dal Vada <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 2</td></tr>
+          <tr><td class="n">Pakoda</td><td class="v">Palak/Veg, plate</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Paneer Pakoda</td><td class="v">plate</td><td class="p">S$ 8</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <hr class="sec-divider">
+
+    <!-- DRY SNACKS + CHAAT -->
+    <div class="section-head">
+      <div class="section-icon">🫙</div>
+      <div class="section-title">Dry Snacks &amp; Chaat</div>
+      <div class="section-sub">Packed fresh · Perfect for gifting</div>
+    </div>
+    <div class="two-col">
+      <div class="col-block">
+        <div class="subsection-label">Dry Snacks</div>
+        <table class="m">
+          <tr class="hs"><td class="n">Pizza Mathri <span class="hs-star">⭐</span></td><td class="v">200g pack</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Poha Chivda</td><td class="v">200g pack</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Nimki</td><td class="v">200g pack</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Dry Kachori</td><td class="v">6 pcs pack</td><td class="p">S$ 8</td></tr>
+        </table>
+      </div>
+      <div class="col-block">
+        <div class="subsection-label">Chaat</div>
+        <table class="m">
+          <tr><td class="n">Dahi Vada</td><td class="v">plate</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Papdi Chaat</td><td class="v">plate</td><td class="p">S$ 8</td></tr>
+          <tr class="hs"><td class="n">Pani Puri <span class="hs-star">⭐ House Special</span></td><td class="v">15 pcs serving</td><td class="p">S$ 5</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>📱 +65 8909 9125 &nbsp;|&nbsp; 📸 @handcraft9192</span>
+    <span>⭐ House Specials &nbsp;|&nbsp; 🟢 100% Pure Vegetarian</span>
+  </div>
+  <div class="stripe-bottom"></div>
+</div>
+
+
+<!-- ══════════════ PAGE 3: SWEETS + RICE + MAINS + CURRIES + VRAT ══════════════ -->
+<div class="page">
+  <div class="stripe-top"></div>
+  <div class="inner">
+
+    <!-- Dish photo row: Rasmalai, Dal Baati, Chole Bhature -->
+    <div class="dish-photos" style="margin-top:4px;">
+      <div class="dish-photo">
+      <div style="display:flex;gap:5px;">
+        <img src="https://images.pexels.com/photos/7449105/pexels-photo-7449105.jpeg?auto=compress&cs=tinysrgb&w=600&h=160&fit=crop" alt="Rasmalai" style="flex:1;min-width:0;height:120px;object-fit:cover;object-position:center;border-radius:8px 0 0 8px;" loading="lazy">
+        <img src="https://images.pexels.com/photos/19151506/pexels-photo-19151506.jpeg?auto=compress&cs=tinysrgb&w=600&h=160&fit=crop" alt="Laddoo" style="flex:1;min-width:0;height:120px;object-fit:cover;object-position:center;border-radius:0 8px 8px 0;" loading="lazy">
+      </div>
+    </div>
+      <div class="dish-photo">
+      <img src="https://images.pexels.com/photos/37182514/pexels-photo-37182514.jpeg?auto=compress&cs=tinysrgb&w=600&h=160&fit=crop" alt="Mains - Dal Baati & Chole Bhature" style="width:100%;height:120px;object-fit:cover;object-position:center;display:block;border-radius:8px;" loading="lazy">
+    </div>
+    </div>
+
+    <!-- SWEETS -->
+    <div class="section-head">
+      <div class="section-icon">🍮</div>
+      <div class="section-title">Sweets, Made with Love</div>
+      <div class="section-sub">Traditional mithai, the homely way</div>
+    </div>
+    <div class="two-col">
+      <div class="col-block">
+        <table class="m">
+          <tr><td class="n">Dry Fruit Ladoo <span class="min-note">Min. 5 pcs</span></td><td class="v">per pc</td><td class="p">S$ 10</td></tr>
+          <tr class="hs"><td class="n">Sugar-Free Dry Fruit Ladoo <span class="hs-star">⭐</span> <span class="min-note">Min. 5 pcs</span></td><td class="v">per pc</td><td class="p">S$ 15</td></tr>
+          <tr><td class="n">Besan Ladoo</td><td class="v">per pc</td><td class="p">S$ 2.50</td></tr>
+          <tr><td class="n">Gujiya <span class="min-note">Min. 6 pcs</span></td><td class="v">per pc</td><td class="p">S$ 2.50</td></tr>
+          <tr><td class="n">Fruit Cream</td><td class="v">200g cup</td><td class="p">S$ 12</td></tr>
+          <tr class="hs"><td class="n">Rasmalai <span class="hs-star">⭐</span></td><td class="v">6 pcs</td><td class="p">S$ 10</td></tr>
+        </table>
+      </div>
+      <div class="col-block">
+        <table class="m">
+          <tr><td class="n">Moong Dal Halwa</td><td class="v">200g cup</td><td class="p">S$ 10</td></tr>
+          <tr><td class="n">Kheer</td><td class="v">cup</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Dryfruit Shrikhand</td><td class="v">200g tub</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Gond Pak</td><td class="v">200g tub</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Rabdi</td><td class="v">200g tub</td><td class="p">S$ 8</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <hr class="sec-divider">
+
+    <!-- RICE, MAINS, BREAD, COMBO -->
+    <div class="section-head">
+      <div class="section-icon">🍚</div>
+      <div class="section-title">Rice, Mains &amp; Combo</div>
+      <div class="section-sub">Wholesome plates for any meal</div>
+    </div>
+    <div class="two-col">
+      <div class="col-block">
+        <div class="subsection-label">Rice</div>
+        <table class="m">
+          <tr><td class="n">Fried Rice</td><td class="v">plate</td><td class="p">S$ 6</td></tr>
+          <tr class="hs"><td class="n">Kabuli Rice <span class="hs-star">⭐ Special</span></td><td class="v">plate</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Lemon Rice</td><td class="v">plate</td><td class="p">S$ 6</td></tr>
+        </table>
+        <div class="subsection-label" style="margin-top:5px;">Main Course</div>
+        <table class="m">
+          <tr class="hs"><td class="n">Dal Baati / Litti Chokha <span class="hs-star">⭐</span></td><td class="v">Rajasthani Special, plate</td><td class="p">S$ 10</td></tr>
+        </table>
+        <div class="subsection-label" style="margin-top:5px;">Bread &amp; Combo</div>
+        <table class="m">
+          <tr><td class="n">Chapati</td><td class="v">per piece</td><td class="p">S$ 2</td></tr>
+          <tr class="hs"><td class="n">Bento Box <span class="hs-star">⭐</span> <span class="min-note">Min. 5 boxes</span></td><td class="v">2 Chapati + 2 Curry/Raita + Rice</td><td class="p">S$ 12</td></tr>
+        </table>
+      </div>
+      <div class="col-block">
+        <div class="subsection-label">Curry Bowls 🍲</div>
+        <table class="m">
+          <tr><td class="n">Paneer Butter Masala</td><td class="v">2-person bowl</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Paneer Capsicum</td><td class="v">bowl</td><td class="p">S$ 7</td></tr>
+          <tr><td class="n">Palak Paneer</td><td class="v">bowl</td><td class="p">S$ 7</td></tr>
+          <tr><td class="n">Mix Veg</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Malai Kofta</td><td class="v">bowl</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Malai Sev</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Chana Masala</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Dal Makhani</td><td class="v">bowl</td><td class="p">S$ 8</td></tr>
+          <tr><td class="n">Dal Tadka</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Aloo Matar</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Punjabi Gobhi</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+          <tr><td class="n">Gatte Ki Sabji</td><td class="v">bowl</td><td class="p">S$ 6</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <hr class="sec-divider">
+
+    <!-- VRAT -->
+    <div class="section-head">
+      <div class="section-icon">🙏</div>
+      <div class="section-title">Vrat / Fasting Special</div>
+      <div class="section-sub">Build-your-own fasting thali</div>
+    </div>
+    <div class="two-col">
+      <div class="col-block">
+        <table class="m">
+          <tr><td class="n">Sabudana Khichdi</td><td class="v">plate</td><td class="p">S$ 6</td></tr>
+        </table>
+      </div>
+      <div class="col-block">
+        <div class="subsection-label">Thali Components — ask for bundle price</div>
+        <table class="m">
+          <tr><td class="n">Sabudana Tikki</td><td class="v">4 pcs</td><td class="p">Ask</td></tr>
+          <tr><td class="n">Rajgira Poori</td><td class="v">4 pcs</td><td class="p">Ask</td></tr>
+          <tr><td class="n">Potato Chips</td><td class="v">plate</td><td class="p">Ask</td></tr>
+          <tr><td class="n">Sabudana Kheer</td><td class="v">bowl</td><td class="p">Ask</td></tr>
+          <tr><td class="n">Potato Curry</td><td class="v">serving</td><td class="p">Ask</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>📱 +65 8909 9125 &nbsp;|&nbsp; 📸 @handcraft9192</span>
+    <span>⭐ House Specials &nbsp;|&nbsp; 🟢 100% Pure Vegetarian</span>
+  </div>
+  <div class="stripe-bottom"></div>
+</div>
+
+
+<!-- ══════════════ PAGE 4: THANK YOU ══════════════ -->
+<div class="page">
+  <div class="stripe-top"></div>
+  <div class="ty-center">
+
+    <div class="garland" style="margin-bottom:12px;">
+      <div class="garland-line" style="max-width:90px;"></div>
+      <span>🌸</span><span>🌼</span><span>🌻</span><span>🌼</span><span>🌸</span>
+      <div class="garland-line" style="max-width:90px;"></div>
+    </div>
+
+    <div class="ty-brand">Thank You!</div>
+    <div class="ty-head">For choosing Homestyle Kitchen 🙏</div>
+
+    <div style="font-family:'Kalam',cursive; font-size:16px; color:var(--saffron); margin-bottom:14px;">
+      "Every dish is made with a mother's care &amp; a home's warmth"
+    </div>
+
+    <!-- Order info box -->
+    <div style="background:#f0faf0; border:2px solid #3D6B35; border-radius:14px; padding:12px 20px; max-width:140mm; margin:0 auto 14px auto; text-align:left; font-size:12px;">
+      <div style="font-weight:800; color:#3D6B35; font-size:13px; margin-bottom:6px;">📦 How to Order &amp; Collect</div>
+      <div style="display:flex; gap:18px;">
+        <div style="flex:1;">
+          <div style="font-weight:700; color:var(--maroon);">🚶 Self Collection</div>
+          <div style="color:var(--muted);">325CP Bus Stop, Sengkang</div>
+        </div>
+        <div style="width:1px; background:#c8e8c8;"></div>
+        <div style="flex:1;">
+          <div style="font-weight:700; color:var(--maroon);">🛵 Home Delivery</div>
+          <div style="color:var(--muted);">Available · Charges as per Grab</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ty-box">
+      <ul>
+        <li>All prices in <strong>Singapore Dollars (SGD)</strong>, subject to confirmation at time of order.</li>
+        <li>Items with "Min. order" require the stated minimum quantity to proceed.</li>
+        <li>Vrat / Fasting thali components priced on request — message us to build your custom thali.</li>
+        <li>Please order at least <strong>24–48 hours in advance</strong> for snacks &amp; sweets; <strong>3–5 days</strong> for bulk/party &amp; combo orders.</li>
+        <li>All dishes are <strong>100% Pure Vegetarian</strong>, homemade in small batches with fresh ingredients.</li>
+        <li>Custom orders welcome! Tell us your occasion and we'll make it special. 🎉</li>
+      </ul>
+    </div>
+
+    <div class="ty-contact-row">
+      <div class="ty-contact-pill">📱 WhatsApp: +65 8909 9125</div>
+      <div class="ty-contact-pill" style="background:var(--saffron);">📸 Instagram: @handcraft9192</div>
+    </div>
+
+    <div class="garland" style="margin-top:18px;">
+      <div class="garland-line" style="max-width:90px;"></div>
+      <span>🌼</span><span>🌸</span><span>🌼</span><span>🌸</span><span>🌼</span>
+      <div class="garland-line" style="max-width:90px;"></div>
+    </div>
+
+    <div style="font-size:11px; color:var(--muted); margin-top:10px; font-style:italic;">
+      Custom-Tailored · Bulk &amp; Party Orders Welcome · 🟢 100% Pure Vegetarian
+    </div>
+  </div>
+  <div class="stripe-bottom"></div>
+</div>
+
+</body>
+</html>
